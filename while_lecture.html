@@ -32,12 +32,15 @@
     do{
         var sectionNumber = (counter+1);
 
-        links += "<a href='page_"+sectionNumber+".html' target='_blank' class='links'>Section "+sectionNumber+"</a>\n";
+        links += "<a href='page_"+sectionNumber+".html' target='_blank' class='links'>Section "+sectionNumber+"</a><br>";
         counter += 1;
 
     }while(counter < 5);
 
     console.log(links);
+
+    // Document write can write html and text in the HTML inside of body
+    document.write(links);
 
 </script>
 
