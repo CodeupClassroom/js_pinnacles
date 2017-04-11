@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+//    do{
+//        var random = Math.floor((Math.random()*50)+1);
+//        console.log(random);
+//    }while(random % 2 == 0);
+
+    while(true){
+
+        var random = Math.floor((Math.random() * 50) + 1);
+        console.log(random);
+        if(random % 2 !== 0){
+            console.log("I stopped at: " + random);
+            break;
+        }
+
+    }
+
+
+    random = Math.floor((Math.random() * 50) + 1);
+    console.log("Random odd number to skip is: "+ random);
+
+    for(var i = 1 ; i <= 50; i++){
+
+        if(i % 2 == 0){
+            continue;
+        }else{
+
+            if(i == random){
+                console.log("Yikes! Skipping number: "+ i);
+            }else{
+                console.log("Here is an odd number: " + i);
+            }
+
+        }
+
+    }
+
+
+
+</script>
+</body>
+</html>

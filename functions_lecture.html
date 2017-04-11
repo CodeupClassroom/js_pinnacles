@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+
+    function goToCodeup(amISick){
+
+        if(amISick == true){
+            console.log("I'm way to sick, i'm not going");
+            return false;
+        }
+
+        console.log("Wake up!");
+        console.log("Have breakfast");
+        console.log("Take shower");
+        console.log("Commute");
+        return true;
+    }
+
+    //Monday
+    var didIMakeIt = goToCodeup();
+    console.log("didIMakeIt? " + didIMakeIt);
+
+    //Tuesday
+    // When you call a function you send the values not the variables names
+    console.log("didIMakeIt? " + goToCodeup(true));
+
+    //Wednesday
+    console.log("didIMakeIt? " + goToCodeup(1));
+
+
+</script>
+</body>
+</html>
