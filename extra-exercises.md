@@ -22,3 +22,11 @@ The output should look like this:
 	<li>Random 17</li>
 </ul>
 ```
+
+### Functions extras
+
+Create 2 functions:
+
+One that does the procedure of generating a random number taking MAX and MIN as parameters, so we can change them every time i call the function without writing the rest of the Math.random Code. Make sure it returns the value of the generated number.
+
+The other function will take a string which is the date in this format: `"11/04/17"` and return it into `April 11 2017`, don't use any built-in date functions in JS, create a switch statement;
