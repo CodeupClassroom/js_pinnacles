@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    "use strict";
+
+    (function(){
+
+        var fruits = [];
+
+        //This is adding elements at the start of the array
+        fruits.push("Banana");
+        fruits.push("Apple");
+        fruits.push("Kiwi");
+        fruits.push("Coconut");
+
+        //This is adding elements at the end of the array
+        fruits.unshift("Watermelon");
+
+        //Creating 100 Generic fruits
+        for(var i =0 ; i<100;i++){
+            fruits.push("Fruit " + i);
+        }
+
+        // Deleting the last element
+        fruits.pop();
+
+        // Deleting the first element
+        fruits.shift();
+
+        // Helps you to find an specific index
+        var looking = fruits.indexOf("Fruit 0");
+
+        // Printing the index of the Fruit 0
+        console.log(looking);
+
+        // Printing the value of index of looking
+        console.log(fruits[looking]);
+
+        // Adds 2 elements at the end of the array
+        var added = fruits.splice(fruits.length, 0, "Grape", "Blueberry");
+
+        console.log(added);
+
+        // Removes the first 2 custom fruits and saves it in a variable
+        var removed = fruits.splice(0, 2);
+
+        console.log(removed);
+
+
+        //reverse the order of the fruits
+        fruits.reverse();
+
+        // Sort
+        fruits.sort();
+
+        console.log("------------------------");
+
+        // Prints all the elements in the array
+
+        fruits.forEach(function(el, i){
+            console.log(el + " index " + i);
+        })
+
+
+
+
+
+//        console.log(fruits[3]);
+
+    })();
+
+</script>
+</body>
+</html>
