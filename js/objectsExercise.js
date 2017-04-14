@@ -55,26 +55,26 @@
         {name: 'George', amount: 320}
     ];
 
-    shoppers.forEach(function(shopper, index) {
-        var discountRate = .35;
-        var totalDollarsPaid = 0;
-        var discountBreakpointDollars = 200;
-        var outputMessage = "";
-
-        if (shopper.amount > discountBreakpointDollars) {
-            totalDollarsPaid = shopper.amount - (shopper.amount * discountRate);
-        } else {
-            totalDollarsPaid = shopper.amount;
-        }
-
-        outputMessage += shopper.name + " bought " + "$" + shopper.amount + " worth of products.";
-        outputMessage += " Final payment: " + "$";
-        outputMessage += (Math.round(totalDollarsPaid * 100) / 100).toFixed(2) + ".";
-
-        console.log("----CUSTOMER " + (index + 1) + "----");
-
-        console.log(outputMessage);
-    });
+    // shoppers.forEach(function(shopper, index) {
+    //     var discountRate = .35;
+    //     var totalDollarsPaid = 0;
+    //     var discountBreakpointDollars = 200;
+    //     var outputMessage = "";
+    //
+    //     if (shopper.amount > discountBreakpointDollars) {
+    //         totalDollarsPaid = shopper.amount - (shopper.amount * discountRate);
+    //     } else {
+    //         totalDollarsPaid = shopper.amount;
+    //     }
+    //
+    //     outputMessage += shopper.name + " bought " + "$" + shopper.amount + " worth of products.";
+    //     outputMessage += " Final payment: " + "$";
+    //     outputMessage += (Math.round(totalDollarsPaid * 100) / 100).toFixed(2) + ".";
+    //
+    //     console.log("----CUSTOMER " + (index + 1) + "----");
+    //
+    //     console.log(outputMessage);
+    // });
 
 	// todo:
 	// Create an array of objects that represent books.
@@ -84,6 +84,11 @@
 
 	// create a variable that holds an author object
 	var stephenPinker = {firstName: 'Stephen', lastName: 'Pinker'};
+
+	// DONT CREATE AN ARRAY LIKE THE ONE BELOW
+    // for the sake of demonstration, there is quite a bit of mixed syntax
+    // for defining objects and object properties. Really, your code should
+    // choose one style and be consistent
 
 	// an array with 4 elements where each of the elements is an object
 	var books = [
@@ -128,10 +133,12 @@
 	// care what we name them, but since code is written for humans, we should give
 	// them meaningful names
 
-		// console.log("Book #" + todo);
-		// console.log("Title: " + todo);
-		// console.log("Author: " + todo);
-		// console.log("---");
+    books.forEach(function(book, index) {
+		console.log("Book #" + index);
+		console.log("Title: " + book.title);
+		console.log("Author: " + book.author.firstName + ' ' + book.author.lastName);
+		console.log("---");
+    });
 
 	// end loop here
 
