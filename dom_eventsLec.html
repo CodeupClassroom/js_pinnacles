@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Events Lecture</title>
+    <style>
+        p {
+            font-size: .5em;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM Events Lecture</h1>
+
+    <button id="login">Login</button>
+
+    <button id="shrink">Minimize text</button>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Ad aliquam culpa delectus dolores ducimus eius eum ex excepturi
+        impedit incidunt ipsum minus necessitatibus officia quisquam,
+        recusandae rerum similique sit veniam? Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit.
+        Ad aliquam culpa delectus dolores ducimus eius eum ex excepturi
+        impedit incidunt ipsum minus necessitatibus officia quisquam,
+        recusandae rerum similique sit veniam? Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit.
+        Ad aliquam culpa delectus dolores ducimus eius eum ex excepturi
+        impedit incidunt ipsum minus necessitatibus officia quisquam,
+        recusandae rerum similique sit veniam? Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit.
+        Ad aliquam culpa delectus dolores ducimus eius eum ex excepturi
+        impedit incidunt ipsum minus necessitatibus officia quisquam,
+        recusandae rerum similique sit veniam? Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit.
+        Ad aliquam culpa delectus dolores ducimus eius eum ex excepturi
+        impedit incidunt ipsum minus necessitatibus officia quisquam,
+        recusandae rerum similique sit veniam?
+    </p>
+
+
+<script>
+
+    "use strict";
+
+    // ++++++++++++++++++++++++  Register Event Listeners
+
+    // element reference to login button
+    var login = document.getElementById("login");
+
+    // element reference to paragraph
+    var paragraph = document.getElementsByTagName("p")[0];
+
+    // element reference to shrink button
+    var shrink = document.getElementById("shrink");
+
+
+    // Log in user dialogue popups
+    function logUserIn () {
+
+        // removing the click event on the login button once it is clicked
+        login.removeEventListener("click", logUserIn, false);
+
+        alert("Welcome to a site for people with strange ideas.");
+
+        var age = prompt("You must be 18 or older to continue. Please enter your age.");
+
+        if (age >= 18) {
+            var answer = confirm("You are about to be re-directed to intense images. Do you wish to continue?");
+            if (answer) {
+                window.location.replace("https://www.catgifpage.com/where-is-the-ball");
+            } else {
+                alert("You made the right choice.");
+            }
+        } else if (age === null) {
+            alert("Well I can't let you in if you don't tell me how old you are!");
+            userInteraction();
+        } else if (isNaN(parseInt(age))) {
+            alert("What a troll.");
+            userInteraction();
+        } else {
+            alert("Wait until you grow up.");
+        }
+
+    }
+
+    // change font-size of whatever "this" refers to
+    function changeColor () {
+        this.style["font-size"] = "1.5em";
+    }
+
+    // shrink text specifically for the element referenced by "paragraph"
+    function shrinkText () {
+        paragraph.style["font-size"] = ".5em";
+    }
+
+    // adding a click event to the login button that fires the logUserIn function
+    login.addEventListener("click", logUserIn, false);
+
+
+    // adding a mouse over event to the paragraph that fires the changeColor function
+    paragraph.addEventListener("mouseover", changeColor, false);
+
+
+    // adding a double click event to the shrink button that fires the shrinkText function
+    shrink.addEventListener("dblclick", shrinkText, false)
+
+
+</script>
+
+</body>
+</html>
