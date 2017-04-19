@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map-canvas {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map-canvas"></div>
+
+<label for="lat">Lat:</label>
+<input type="text" id="lat" value="29.426791">
+
+<label for="long">long:</label>
+<input type="text" id="long" value="-98.489602">
+
+<label for="zoom">zoom:</label>
+<input type="hidden" id="zoom" value="10">
+
+<button id="in">+</button>
+<button id="out">-</button>
+
+<button id="update">Update map</button>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5-ZHPbrstxQAsVZi6Smo_RoY6yfL1Pgk"></script>
+
+<script type="application/javascript">
+
+    (function () {
+        "use strict";
+
+        var updateBtn = document.getElementById("update");
+        var zoomVal = parseInt(document.getElementById("zoom").value);
+        var zoomIn = document.getElementById("in");
+        var zoomOut = document.getElementById("out");
+        var map = new google.maps.Map(document.getElementById("map-canvas"), null);
+        var geocoder = new google.maps.Geocoder();
+        var lat = parseFloat(document.getElementById("lat").value);
+        var long = parseFloat(document.getElementById("long").value);
+        var codeup = { lat: 29.426791, lng: -98.489602 };
+        var infowindow = new google.maps.InfoWindow({
+            content: "<b>Changing the world, one programmer at a time.</b>b>"
+        });
+
+
+        function renderMap(zoomVal, lat, long) {
+
+            var mapOptions = {
+                // Set the zoom level
+                zoom: zoomVal,
+
+                // This sets the center of the map at our location
+                center: {
+                    lat: lat,
+                    lng: long
+                },
+                disableDefaultUI: true
+
+            };
+
+            //Render the map
+            map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+            // Changes the style of the map using the setMapTypeId function
+            map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+
+            // Creates the marker
+            var marker = new google.maps.Marker({
+                position: codeup,
+                map: map
+            });
+
+
+            //Creates the info window
+            infowindow.open(map, marker);
+
+        }
+
+        function renderGeocoder(lat, long) {
+
+            var latlngObj = {'lat': lat, 'lng': long};
+
+            geocoder.geocode({'location': latlngObj}, function (results, status) {
+                if (status !== 'OK') {
+                    alert("Error " + status);
+                }else{
+                    //ok
+                    map.setCenter(results[0].geometry.location);
+                    console.log(status);
+                }
+            });
+        }
+
+        // Run the render of the map for the first time
+        renderMap(zoomVal, lat, long);
+
+        zoomIn.addEventListener("click", function () {
+            map.setZoom(zoomVal += 1)
+        });
+
+        zoomOut.addEventListener("click", function () {
+            map.setZoom(zoomVal -= 1)
+        });
+
+        updateBtn.addEventListener("click", function () {
+
+            lat = parseFloat(document.getElementById("lat").value);
+            long = parseFloat(document.getElementById("long").value);
+
+            // This is the solution rendering the map again with dynamic options
+            renderMap(zoomVal, lat, long);
+
+            // This is the same solution but using geoCoder
+//            renderGeocoder(lat, long);
+        });
+
+
+    })();
+
+</script>
+</body>
+</html>
