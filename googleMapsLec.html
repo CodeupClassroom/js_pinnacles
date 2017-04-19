@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* STEP 1.5: set dimensions of the div that displays map */
+        #map-display {
+            height: 500px;
+            width: 800px;
+            background-color: red;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Google Map</h1>
+
+    <!-- STEP 1: create div to display map -->
+    <div id="map-display"></div>
+
+    <!-- STEP 2: include script tags that point to the google maps api src, passing in the API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxIPbNd4ljI6NdSyP5ugk4XoKDzw2VEZM"></script>
+
+    <script>
+
+        (function() {
+
+            "use strict";
+
+            // create DOM reference to map display
+            var mapDisplay = document.getElementById("map-display");
+
+            // STEP 3: define an object to hold the map options setting at least the zoom level and center location
+            var options = {
+                zoom : 8,
+                center : {
+                    lat: 29.5,
+                    lng: -98.5
+                }
+            };
+
+            // STEP 4: create a new map object passing in the DOM location of the map and the options object
+            var map = new google.maps.Map(mapDisplay, options);
+
+
+
+        })();
+
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
