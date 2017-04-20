@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 id="title" class="titles">Hello</h1>
+
+<p id="intro" class="texts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda cupiditate inventore nulla officia praesentium rem. Cumque illum iure maxime nisi praesentium quis, quo reprehenderit sit temporibus ullam. Consectetur, sequi.</p>
+
+<ul id="list">
+    <li class="codeup">Fer</li>
+    <li class="codeup">Justin</li>
+    <li class="codeup">Ryan</li>
+</ul>
+
+<div id="box" class="boxes">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi delectus eaque earum fuga fugiat ipsam, iste magnam, nesciunt porro quaerat quasi quo repudiandae tenetur ullam? Distinctio eveniet ipsam maxime.
+    <a href="#">Link</a>
+</div>
+
+<!--Using a local file-->
+<!--<script src="js/jquery-2.2.4.js"></script>-->
+
+<!--Using a CDN-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+<!--DO NOT USE LOCAL AND CDN AT THE SAME TIME-->
+
+<!--Custom js-->
+<script>
+
+    // the IFFE function in jQuery
+    $(document).ready(function(){
+
+        // All the magic happens in here
+        alert($('#box').html());
+
+
+    });
+
+</script>
+
+</body>
+</html>
