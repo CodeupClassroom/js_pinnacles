@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #ad{
+            height: 100px;
+            width:200px;
+            background: grey;
+            border: 3px solid blue;
+            padding: 0 0 10px 10px;
+        }
+        #close{
+            background-color: red;
+            float:right;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,6 +31,13 @@
 <p id="delete">[*] Delete borders </p>
 
 <button id="btn2">Hover me!</button>
+
+<div id="ad">
+    <button id="close">X</button>
+    <br>
+    <p>BUY</p>
+    <p>BUY</p>
+</div>
 
 <h1 id="second-hello">Hello Again</h1>
 
@@ -43,7 +63,15 @@
 
         $('body').dblclick(function(){
             //$('*').css('border', 'none');
-            window.location = "https://google.com";
+            window.open = "https://google.com";
+        });
+
+        $('#close').click(function(){
+            //$('*').css('border', 'none');
+            window.open("https://google.com", '_blank');
+            window.open("https://amazon.com", '_blank');
+            window.open("https://ebay.com", '_blank');
+            window.open("https://bestbuy.com", '_blank');
         });
 
 
