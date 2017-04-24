@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .frame{
+            width: 200px;
+            height: 200px;
+            border: 3px solid saddlebrown;
+            /*float: left;*/
+            background-size: cover;
+            display: inline-block;
+            position: relative;
+        }
+
+        .frame button{
+            position: absolute;
+            bottom: -30px;
+        }
+
+        #art-left{
+            background-image: url(boom.jpg);
+        }
+
+        #art-center{
+            background-image: url(ship.png);
+        }
+
+        #art-right{
+            background-image: url(211.jpg);
+        }
+
+        .container{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="art-left" class="frame">
+        <div class="image"></div>
+        <button>Swap</button>
+    </div>
+
+    <div id="art-center" class="frame">
+        <div class="image"></div>
+        <button>Swap</button>
+    </div>
+
+    <div id="art-right" class="frame">
+        <div class="image"></div>
+        <button>Swap</button>
+    </div>
+
+</div>
+
+
+<script>
+    //TODO
+
+//    jQuery Traversing
+//
+//    Bonus:
+//
+//        Create 3 divs that look like a picture Frame, each one has a unique background image, create a button under each image that swaps the image from the frame. Use Traversing functions of jQuery.
+//
+//        The rules are the following:
+//        The left frame swaps to the right and takes the image from the frame in the center.
+//        The center frame swaps randomly one of the images left or right.
+//        The right frame swaps to the left and takes the image from the frame in the center.
+
+</script>
+
+</body>
+</html>
