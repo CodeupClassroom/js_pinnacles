@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .frame{
+            width: 300px;
+            height: 300px;
+            border: 10px solid saddlebrown;
+            display: inline-block;
+            position: relative;
+            margin: 0 10px;
+            margin-bottom: 30px;
+        }
+
+        .frame button{
+            position: absolute;
+            bottom: -40px;
+        }
+
+        .image{
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+        }
+
+        #art-left .image{
+            background-image: url(img/art1.jpg);
+        }
+
+        #art-center .image{
+            background-image: url(img/art2.jpg);
+        }
+
+        #art-right .image{
+            background-image: url(img/art3.jpg);
+        }
+
+        .container{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>jQuery Traversing</h1>
+
+    <div id="art-left" class="frame">
+        <div class="image"></div>
+        <button>Swap</button>
+    </div>
+
+    <div id="art-center" class="frame">
+        <div class="image"></div>
+        <button>Swap</button>
+    </div>
+
+    <div id="art-right" class="frame">
+        <div class="image"></div>
+        <button>Swap</button>
+    </div>
+
+
+    <pre>
+        Bonus:
+
+        Create 3 divs that look like a picture Frame, each one has a unique background image, create a button under each image that swaps the image from the frame. Use Traversing functions of jQuery.
+
+        The rules are the following:
+
+        The left frame swaps to the right and takes the image from the frame in the center.
+        The center frame swaps randomly one of the images left or right.
+        The right frame swaps to the left and takes the image from the frame in the center.
+    </pre>
+
+</div>
+
+<script src="https:code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+        "use strict";
+
+        $("button").click(function(){
+
+            var parentID = $(this).parent().attr("id");
+            var originalDiv = $(this).prev();
+
+            switch (parentID){
+                case "art-left":
+
+                    var nextDiv = $(this).parent().next().children().first();
+
+                    var originalImg = originalDiv.css("background-image");
+                    var secondImg = nextDiv.css("background-image");
+
+                    break;
+                case "art-center":
+
+                    var num = Math.floor(Math.random() * (2 - 0)) + 1;
+                    var nextDiv = (num == 1) ? $(this).parent().next().children().first() : $(this).parent().prev().children().first()
+
+                    var originalImg = originalDiv.css("background-image");
+                    var secondImg = nextDiv.css("background-image");
+
+                    break;
+                case "art-right":
+
+                    var nextDiv = $(this).parent().prev().children().first();
+
+                    var originalImg = originalDiv.css("background-image");
+                    var secondImg = nextDiv.css("background-image");
+
+                    break;
+            }
+
+            originalDiv.css("background-image", secondImg );
+            nextDiv.css("background-image", originalImg);
+
+        });
+
+    });
+
+
+</script>
+
+</body>
+</html>
