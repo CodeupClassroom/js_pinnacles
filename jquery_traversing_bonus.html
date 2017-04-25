@@ -11,6 +11,7 @@
             display: inline-block;
             position: relative;
             margin: 0 10px;
+            margin-bottom: 30px;
         }
 
         .frame button{
@@ -45,6 +46,8 @@
 
 <div class="container">
 
+    <h1>jQuery Traversing</h1>
+
     <div id="art-left" class="frame">
         <div class="image"></div>
         <button>Swap</button>
@@ -60,22 +63,71 @@
         <button>Swap</button>
     </div>
 
+
+    <pre>
+        Bonus:
+
+        Create 3 divs that look like a picture Frame, each one has a unique background image, create a button under each image that swaps the image from the frame. Use Traversing functions of jQuery.
+
+        The rules are the following:
+
+        The left frame swaps to the right and takes the image from the frame in the center.
+        The center frame swaps randomly one of the images left or right.
+        The right frame swaps to the left and takes the image from the frame in the center.
+    </pre>
+
 </div>
 
+<script src="https:code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
 
 <script>
-    //TODO
 
-//    jQuery Traversing
-//
-//    Bonus:
-//
-//        Create 3 divs that look like a picture Frame, each one has a unique background image, create a button under each image that swaps the image from the frame. Use Traversing functions of jQuery.
-//
-//        The rules are the following:
-//        The left frame swaps to the right and takes the image from the frame in the center.
-//        The center frame swaps randomly one of the images left or right.
-//        The right frame swaps to the left and takes the image from the frame in the center.
+    $(document).ready(function(){
+
+        "use strict";
+
+        $("button").click(function(){
+
+            var parentID = $(this).parent().attr("id");
+            var originalDiv = $(this).prev();
+
+            switch (parentID){
+                case "art-left":
+
+                    var nextDiv = $(this).parent().next().children().first();
+
+                    var originalImg = originalDiv.css("background-image");
+                    var secondImg = nextDiv.css("background-image");
+
+                    break;
+                case "art-center":
+
+                    var num = Math.floor(Math.random() * (2 - 0)) + 1;
+                    var nextDiv = (num == 1) ? $(this).parent().next().children().first() : $(this).parent().prev().children().first()
+
+                    var originalImg = originalDiv.css("background-image");
+                    var secondImg = nextDiv.css("background-image");
+
+                    break;
+                case "art-right":
+
+                    var nextDiv = $(this).parent().prev().children().first();
+
+                    var originalImg = originalDiv.css("background-image");
+                    var secondImg = nextDiv.css("background-image");
+
+                    break;
+            }
+
+            originalDiv.css("background-image", secondImg );
+            nextDiv.css("background-image", originalImg);
+
+        });
+
+    });
+
 
 </script>
 
