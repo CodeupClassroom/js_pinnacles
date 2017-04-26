@@ -6,23 +6,51 @@
 </head>
 <body>
 
+<ul id="names">
+
+</ul>
+
 
 <script src="https:code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous"></script>
 <script>
+
     $(document).ready(function() {
 
         "use strict";
 
-            $.ajax("https://httpbin.org/post", {
-                "data" :{
-                    name:"fer"
-                },
-                type: "POST"
-            }).done(function(data){
-                console.log(data);
+        var options = {
+            "data" : {
+                "name": "fer",
+                "age": 26,
+                "single": true
+            },
+            "type": "GET"
+        };
+
+        var url = "http://swapi.co/api/people/";
+
+        function writeNames(names){
+
+            names.results.forEach(function (el){
+                $("#names").append("<li>"+el.name+"</li>");
             });
+
+        }
+
+        function showErrorMessage(data){
+            if(data.status == 404){
+                alert("Not found");
+            }
+        }
+
+        // This one executes by the time the page loads
+        $.ajax(url, options).done(function(data){
+            writeNames(data);
+        }).fail(function(data){
+            showErrorMessage(data);
+        });
 
     });
 </script>
